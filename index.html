@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Delcourt | Photographe</title>
+    <link rel="icon" type="image/png" href="Logo onglet.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="Touch icon.png">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F4E5AF;
+            --header-height: 180px;
+            --nav-height: 48px;
+            --max-width: 1400px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            background: #ffffff;
+            color: #333;
+            min-width: 320px;
+            padding-top: calc(var(--header-height) + var(--nav-height));
+        }
+        
+        header {
+            background: black;
+            color: white;
+            height: var(--header-height);
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-container img {
+            height: 100%;
+            width: auto;
+            max-height: 140px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .devis-btn {
+            background-color: var(--gold);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .devis-btn:hover {
+            background-color: #b39030;
+        }
+        
+        nav {
+            background: #111;
+            padding: 0.8rem;
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul {
+            display: inline-flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            display: block;
+            white-space: nowrap;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        .hero {
+            width: 100%;
+            aspect-ratio: 3/2;
+            position: relative;
+            background: url('IMG_0200.JPG') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .section {
+            padding: clamp(2rem, 5vw, 4rem) 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: black;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border: 1px solid #eee;
+            transition: transform 0.3s;
+            background: white;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        
+        .service-card h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(1rem, 3vw, 2rem);
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
+        
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/2;
+            overflow: hidden;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .contact-form {
+            max-width: min(600px, 90%);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            font-family: inherit;
+            border-radius: 4px;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background: black;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+        
+        button:hover {
+            background: var(--gold);
+        }
+        
+        footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        @media (min-width: 1400px) {
+            .logo-container img {
+                max-height: 150px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            :root {
+                --header-height: 120px;
+            }
+            
+            header {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .logo-container img {
+                max-height: 100px;
+            }
+            
+            .devis-btn {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+            
+            nav {
+                padding: 0.6rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+            }
+            
+            nav a {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 90px;
+                --nav-height: 40px;
+            }
+            
+            body {
+                padding-top: calc(var(--header-height) + var(--nav-height));
+            }
+            
+            header {
+                padding: 0.6rem 1rem;
+            }
+            
+            .logo-container img {
+                max-height: 70px;
+            }
+            
+            .devis-btn {
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+            }
+            
+            nav {
+                padding: 0.4rem;
+            }
+            
+            nav ul {
+                gap: 0.5rem;
+                justify-content: space-around;
+                width: 100%;
+            }
+            
+            nav a {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+                letter-spacing: 0;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --header-height: 70px;
+                --nav-height: 36px;
+            }
+            
+            header {
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .logo-container img {
+                max-height: 50px;
+            }
+            
+            .devis-btn {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            nav {
+                padding: 0.3rem;
+            }
+            
+            nav ul {
+                gap: 0.3rem;
+            }
+            
+            nav a {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+              window.voiceflow.chat.load({
+                verify: { projectID: '67f944d55c02abbb3caeddd2' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+              });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+      </script>
+
+
+
+
+
+
+
+
+
+    <header>
+        <div class="logo-container">
+            <img src="Logo blanc.png" alt="Logo Sam Delcourt Photographie">
+        </div>
+        <a href="#contact" class="devis-btn">Devis</a>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h2>Capturez vos moments précieux</h2>
+            <p>Photographe professionnel basé en Auvergne</p>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2 class="section-title">Mes Services</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Mariages</h3>
+                <p>Immortalisez le plus beau jour de votre vie avec des photos élégantes et authentiques.</p>
+            </div>
+            <div class="service-card">
+                <h3>Portraits</h3>
+                <p>Des portraits naturels qui capturent votre personnalité unique.</p>
+            </div>
+            <div class="service-card">
+                <h3>Événements</h3>
+                <p>Couvrez vos événements professionnels ou personnels avec style.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="portfolio">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="IMG_0410.JPG" alt="Photo 1">
+            </div>
+            <div class="gallery-item">
+                <img src="IMG_0410.JPG" alt="Photo 2">
+            </div>
+            <div class="gallery-item">
+                <img src="IMG_0410.JPG" alt="Photo 3">
+            </div>
+            <div class="gallery-item">
+                <img src="IMG_0410.JPG" alt="Photo 4">
+            </div>
+            <div class="gallery-item">
+                <img src="IMG_0410.JPG" alt="Photo 5">
+            </div>
+            <div class="gallery-item">
+                <img src="IMG_0410.JPG" alt="Photo 6">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-form">
+            <form id="contactForm" action="mailto:votre@email.com" method="post" enctype="text/plain" onsubmit="return formatEmail(event)">
+                <input type="text" id="nom" name="nom" placeholder="Nom" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="tel" id="telephone" name="telephone" placeholder="Téléphone">
+                <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Sam DELCOURT - Tous droits réservés</p>
+        <div class="social-links">
+            <a href="https://instagram.com/delcourt.photographie" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        function formatEmail(e) {
+            e.preventDefault();
+            
+            const nom = document.getElementById('nom').value;
+            const email = document.getElementById('email').value;
+            const telephone = document.getElementById('telephone').value;
+            const message = document.getElementById('message').value;
+            
+            const mailtoLink = `mailto:votre@email.com?subject=Nouveau message de ${nom}&body=Nom: ${nom}%0D%0A%0D%0AEmail: ${email}%0D%0A%0D%0ATéléphone: ${telephone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            window.location.href = mailtoLink;
+            return false;
+        }
+    </script>
+</body>
+</html>
