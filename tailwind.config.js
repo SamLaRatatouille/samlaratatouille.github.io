@@ -5,18 +5,18 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#E0E0E0', // silver
-          light: '#F5F5F5',
+          DEFAULT: '#E5E5E5', // metallic silver
+          light: '#FFFFFF',
           dark: '#A0A0A0',
         },
         secondary: {
-          DEFAULT: '#000000', // black
-          light: '#212121',
+          DEFAULT: '#000000', // rich black
+          light: '#1A1A1A',
         },
         accent: {
-          DEFAULT: '#D4AF37', // gold
-          light: '#F5D76E',
-          dark: '#996515',
+          DEFAULT: '#C0C0C0', // silver
+          light: '#D9D9D9',
+          dark: '#808080',
         },
       },
       fontFamily: {
