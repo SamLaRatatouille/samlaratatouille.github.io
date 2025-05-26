@@ -52,7 +52,7 @@ const NavBar: React.FC = () => {
           <img 
             src="/Logo site.1.png" 
             alt="DB Agency" 
-            className="h-12 md:h-16"
+            className="h-14 md:h-20"
           />
         </motion.div>
 
