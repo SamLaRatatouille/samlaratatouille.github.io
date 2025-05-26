@@ -50,7 +50,7 @@ const NavBar: React.FC = () => {
           transition={{ delay: 0.3, duration: 0.5 }}
         >
           <img 
-            src="/logo.svg" 
+            src="/Logo site.1.png" 
             alt="DB Agency" 
             className="h-12 md:h-16"
           />
