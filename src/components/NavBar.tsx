@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import Logo from './Logo';
 import Button from './Button';
 
 const NavBar: React.FC = () => {
@@ -44,17 +43,18 @@ const NavBar: React.FC = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center">
-          <Logo />
-          <motion.span 
-            className="ml-3 font-serif text-xl md:text-2xl font-semibold text-primary"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            Dream Business Agency
-          </motion.span>
-        </div>
+        <motion.div 
+          className="flex items-center"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          <img 
+            src="/logo.svg" 
+            alt="DB Agency" 
+            className="h-12 md:h-16"
+          />
+        </motion.div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
