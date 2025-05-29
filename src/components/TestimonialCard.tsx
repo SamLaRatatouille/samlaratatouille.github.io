@@ -21,19 +21,28 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="bg-secondary-light p-8 rounded-lg shadow-lg h-full flex flex-col"
+      className="bg-secondary-light p-8 rounded-lg shadow-lg h-full flex flex-col will-change-transform"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true, margin: '50px' }}
+      transition={{ 
+        type: 'spring',
+        damping: 25,
+        stiffness: 100,
+        delay 
+      }}
       whileHover={{ 
-        y: -10,
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        y: -5,
+        transition: {
+          type: 'spring',
+          damping: 15,
+          stiffness: 300,
+        }
       }}
     >
       <div className="flex mb-6 items-center">
         <div className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-accent">
-          <img src={image} alt={name} className="w-full h-full object-cover" />
+          <img src={image} alt={name} className="w-full h-full object-cover" loading="lazy" />
         </div>
         <div>
           <h3 className="text-lg font-medium text-primary">{name}</h3>

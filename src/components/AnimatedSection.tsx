@@ -18,15 +18,26 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    rootMargin: '50px 0px',
   });
 
   const variants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      transition: {
+        type: 'spring',
+        damping: 25,
+        stiffness: 100,
+      }
+    },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.8,
+        type: 'spring',
+        damping: 25,
+        stiffness: 100,
         delay,
       }
     },
@@ -36,7 +47,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     <motion.section
       id={id}
       ref={ref}
-      className={`py-16 md:py-24 ${className}`}
+      className={`py-16 md:py-24 will-change-transform ${className}`}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       variants={variants}
