@@ -39,10 +39,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
-              <Logo size="lg" />
-              <span className="ml-3 font-serif text-2xl font-semibold text-primary">
-                Dream Business Agency
-              </span>
+              <img 
+                src="/Logo site transparent.png" 
+                alt="DB Agency" 
+                className="h-12 w-auto"
+              />
             </div>
             <p className="mb-6 max-w-md">
               Premium digital marketing and OnlyFans management services to help creators achieve exceptional growth and success.
